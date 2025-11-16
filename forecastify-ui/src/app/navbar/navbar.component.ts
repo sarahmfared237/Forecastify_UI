@@ -6,8 +6,11 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { toggleTempUnit, toggleTheme } from '../store/settings/settings.actions';
 import { selectTheme, selectTempUnit } from '../store/settings/settings.selectors';
-import { CityLatestI } from '../interfaces/city-details.interface';
+import { CityI, CityLatestI } from '../interfaces/city-details.interface';
 import { selectCities } from '../store/cities/cities.selectors';
+import { updateCities } from '../store/cities/cities.actions';
+import { minimizeCities, populateDesc } from '../utils/city.utils';
+import { CityService } from '../services/city.service';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +25,7 @@ export class NavbarComponent implements OnInit {
   isCelsius$!: Observable<boolean>;
   cities$!: Observable<CityLatestI[]>;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store, private router: Router, private cityService: CityService) {
     this.isDarkMode$ = this.store.select(selectTheme);
     this.isCelsius$ = this.store.select(selectTempUnit);
     this.cities$ = this.store.select(selectCities);
@@ -32,9 +35,14 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.cities$.subscribe(cities => {
-      this.cities = cities;
-      this.filteredSuggestions = cities;
+      this.cityService.getAllCities().subscribe((data: CityI[]) => {
+      let cities = data;
+      cities.forEach(city => populateDesc(city));
+      this.cities = minimizeCities(cities);
+      this.store.dispatch(updateCities({ cities: this.cities }));
+      this.filteredSuggestions = this.cities;
+    }, error => {
+        console.error('Error fetching cities:', error);
     });
   }
 
