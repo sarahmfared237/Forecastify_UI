@@ -59,18 +59,3 @@ From `./src`:
 npm start
 ```
 
-## Structure:
-
-[NAVBAR: home | search | light/dark | C/F toggle]
-
-[Hero section: short title + visual]
-
-[Slider: daily weather cards (latest day)] (More details button)
-
-[Trend sorter bar: Sun | Cold | Wind | Dry | Reset]
-
-[Headline: “Explore all cities”]
-
-Page: [Grid of city cards]
-
-[Chatbot bubble fixed bottom-right]
