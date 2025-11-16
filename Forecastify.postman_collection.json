@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "601eb628-2198-433e-97c8-7e8431111238",
+		"name": "Forecastify",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47635571",
+		"_collection_link": "https://sarahmfared237-1033031.postman.co/workspace/Sarah-Fared's-Workspace~ac66f776-6efc-461d-8c79-0a3e09acb990/collection/47635571-601eb628-2198-433e-97c8-7e8431111238?action=share&source=collection_link&creator=47635571"
+	},
+	"item": [
+		{
+			"name": "Get forecast",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjY5OTk4QzkwNEI4NDM0OEYyMjBEQjY4RUU2QzNEMUM1IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2lkZW50aXR5Lml0aS5nb3YuZWciLCJuYmYiOjE3NTgyODkwMDUsImlhdCI6MTc1ODI4OTAwNSwiZXhwIjoxNzU4MjkyNjA1LCJhdWQiOlsiQXV0aG9yaXphdGlvbnMiLCJQcm9ncmFtcyIsIlRyYWNrcyIsIlVzZXJQcm9maWxlcyIsIlJlc291cmNlcyIsIlRlc3RpbW9uaWFscyIsIlBhcnRlbmVycyIsIkNvbnRhY3RzIiwiQ2VydGlmaWNhdGVzIiwiQXdhcmRzIiwiRGlwbG9tYXMiLCJTa2lsbHMiLCJPcmdhbml6YXRpb25TdHJ1Y3R1cmVzIiwiSW50ZXJ2aWV3cyIsIkV2ZW50cyIsIk9yZ2FuaXphdGlvbnMiLCJOZXdzIiwiTG9jYXRpb25zIiwiSVRJUG9ydGFsQVBJIiwiRWR1Y2F0aW9ucyIsIlNlc3Npb25zIl0sInNjb3BlIjpbIm9wZW5pZCIsImVtYWlsIiwicHJvZmlsZSIsIkF1dGhvcml6YXRpb25zIiwiUHJvZ3JhbXMiLCJUcmFja3MiLCJVc2VyUHJvZmlsZXMiLCJSZXNvdXJjZXMiLCJUZXN0aW1vbmlhbHMiLCJQYXJ0ZW5lcnMiLCJDb250YWN0cyIsIkNlcnRpZmljYXRlcyIsIkF3YXJkcyIsIkRpcGxvbWFzIiwiU2tpbGxzIiwiT3JnYW5pemF0aW9uU3RydWN0dXJlcyIsIkludGVydmlld3MiLCJFdmVudHMiLCJPcmdhbml6YXRpb25zIiwiTmV3cyIsIkxvY2F0aW9ucyIsIklUSVBvcnRhbEFQSSIsIkVkdWNhdGlvbnMiLCJTZXNzaW9ucyJdLCJhbXIiOlsicHdkIl0sImNsaWVudF9pZCI6ImludGVybmFsLXdlYnNpdGUtY2xpZW50Iiwic3ViIjoiMjU4MDEwNjItMGU2Ny00ZWI2LTZkZTgtMDhkZGNlMTA3ODUyIiwiYXV0aF90aW1lIjoxNzU4Mjg4MTA4LCJpZHAiOiJsb2NhbCIsImltYWdlSWQiOiIyMjVhMzk0Yy03MWE3LTRhZjEtYTBiZC1iYjRiZWU4MzhmM2UiLCJpbWFnZVVybCI6Imh0dHBzOi8vcmdhdGV3YXkuaXRpLmdvdi5lZy9SZXNvdXJjZXMvUmVzb3VyY2VzL0dldFJlc291cmNlRmlsZT9QdWJsaWNJZD0yMjVhMzk0Yy03MWE3LTRhZjEtYTBiZC1iYjRiZWU4MzhmM2VcdTAwMjZTaXplPVx1MDAyNlNpemU9NTAiLCJmdWxsTmFtZUVuIjoiU2FyYWggTW9oYW1lZCBGYXJlZCAiLCJmdWxsTmFtZUFyIjoiXHUwNjMzXHUwNjI3XHUwNjMxXHUwNjI5IFx1MDY0NVx1MDYyRFx1MDY0NVx1MDYyRiBcdTA2NDFcdTA2MzFcdTA2NEFcdTA2MkYgIiwiZW1haWwiOiJzYXJhaGZhcmVkMzk1QGdtYWlsLmNvbSIsImN1bHR1cmUiOiIyIiwic2lkIjoiMEQxNUM5M0I2OUE0N0Y2RUIwODBBQkM2NUY0OEJBNDMiLCJqdGkiOiJDMUI3Qzg0NzM2RTQ5QzZGODk3M0ZCNEU4OUI3NUM2RSJ9.iS-UBCUk6t2GfeVJ5ZQMoYgh3eitDsc7N7l66k9zSPuuEXExFLQ8FcjGODGurAciAE1YE75Ncui6mniMPYLp6fWN2LlDQccgwwDl7eKLWibhgkPytDaWDGxnrykSdw8WylMlr6EMYhzO1LuJyz0ciM-SOzzZW8aXeczn3XCjOBY9o_eUulvgrzMSBk3ZPnNYZRFENBsqi0P5BNdHsRN7wCDqHsUGMvIrFA99rIPSQlNr5HrbQb87twsuMGkQaFd7aViUit-voru8S447SFcrwhWMxEctIrSxwLmtEJQFOA73mIL0AzZZLeJsjHbnmD9cxO7a5teIyrL-swDjKwAwLg",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://fightable-aurelio-indigested.ngrok-free.dev/forecast",
+					"protocol": "https",
+					"host": [
+						"fightable-aurelio-indigested",
+						"ngrok-free",
+						"dev"
+					],
+					"path": [
+						"forecast"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Get city forecast",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fightable-aurelio-indigested.ngrok-free.dev/cityForecast/:city_id",
+					"protocol": "https",
+					"host": [
+						"fightable-aurelio-indigested",
+						"ngrok-free",
+						"dev"
+					],
+					"path": [
+						"cityForecast",
+						":city_id"
+					],
+					"variable": [
+						{
+							"key": "city_id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		}
+	]
+}

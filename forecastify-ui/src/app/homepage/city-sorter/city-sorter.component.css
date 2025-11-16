@@ -1,0 +1,104 @@
+.sorter-container-light {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.sorter-container-dark {
+  background-color: #1e40af;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.sorter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sorter-title-light {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.sorter-title-dark {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+.sorter-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.button-text {
+  font-size: 1rem;
+}
+
+/* Light mode inactive buttons */
+.sort-button-light-inactive {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+}
+
+.sort-button-light-inactive:hover {
+  background-color: #bfdbfe;
+}
+
+/* Dark mode inactive buttons */
+.sort-button-dark-inactive {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+.sort-button-dark-inactive:hover {
+  background-color: #1e40af;
+}
+
+/* Active button states */
+.sort-button-hottest {
+  background-color: #f97316;
+  color: white;
+}
+
+.sort-button-coldest {
+  background-color: #60a5fa;
+  color: white;
+}
+
+.sort-button-dry {
+  background-color: #eab308;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .sorter-buttons {
+    flex-direction: column;
+  }
+
+  .sort-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

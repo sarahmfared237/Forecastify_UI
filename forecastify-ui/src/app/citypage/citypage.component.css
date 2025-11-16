@@ -1,0 +1,404 @@
+.city-page-light {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #93c5fd, #3b82f6);
+  padding: 2rem 1rem;
+}
+
+.city-page-dark {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1e3a8a, #0c1e47);
+  padding: 2rem 1rem;
+}
+
+.city-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.city-header {
+  margin-bottom: 2rem;
+}
+
+.city-title-light {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.city-title-dark {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+/* Current Weather */
+.current-weather-light {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.current-weather-dark {
+  background: rgba(30, 64, 175, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.weather-main {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.weather-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.weather-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.temp-display-light {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #2563eb;
+  line-height: 1;
+}
+
+.temp-display-dark {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #93c5fd;
+  line-height: 1;
+}
+
+.status-text-light {
+  font-size: 1.5rem;
+  color: #1d4ed8;
+  margin-top: 0.5rem;
+}
+
+.status-text-dark {
+  font-size: 1.5rem;
+  color: #bfdbfe;
+  margin-top: 0.5rem;
+}
+
+/* Weather Details Grid */
+.weather-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-card-light {
+  background: #eff6ff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.detail-card-dark {
+  background: rgba(30, 64, 175, 0.3);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.detail-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.detail-card-dark .detail-value {
+  color: #93c5fd;
+}
+
+.detail-value-small {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.detail-card-dark .detail-value-small {
+  color: #93c5fd;
+}
+
+.detail-status {
+  font-size: 1rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+/* Date Picker */
+.date-picker-light {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.date-picker-dark {
+  background: rgba(30, 64, 175, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.section-title-light {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin: 0 0 1.5rem 0;
+}
+
+.section-title-dark {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 0 1.5rem 0;
+}
+
+.date-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.date-card-light {
+  background: #eff6ff;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.date-card-light:hover {
+  background: #dbeafe;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.date-card-dark {
+  background: rgba(30, 64, 175, 0.3);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.date-card-dark:hover {
+  background: rgba(30, 64, 175, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.date-card-selected-light {
+  background: #3b82f6;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #2563eb;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.date-card-selected-light .date-day,
+.date-card-selected-light .date-number,
+.date-card-selected-light .date-temp {
+  color: white !important;
+}
+
+.date-card-selected-dark {
+  background: rgba(59, 130, 246, 0.5);
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid #60a5fa;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+.date-card-selected-dark .date-day,
+.date-card-selected-dark .date-number,
+.date-card-selected-dark .date-temp {
+  color: white !important;
+}
+
+.date-day {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.date-card-dark .date-day {
+  color: #93c5fd;
+}
+
+.date-number {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 0.5rem;
+}
+
+.date-card-dark .date-number {
+  color: #bfdbfe;
+}
+
+.date-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.date-temp {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2563eb;
+  margin-top: 0.5rem;
+}
+
+.date-card-dark .date-temp {
+  color: #93c5fd;
+}
+
+/* Chart */
+.chart-container-light {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container-dark {
+  background: rgba(30, 64, 175, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.chart-wrapper {
+  padding: 2rem 0;
+}
+
+.chart-bars {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 250px;
+  gap: 0.5rem;
+}
+
+.chart-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.chart-temp-light {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+
+.chart-temp-dark {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #93c5fd;
+  margin-bottom: 0.5rem;
+}
+
+.chart-bar-light {
+  width: 100%;
+  max-width: 50px;
+  background: linear-gradient(to top, #3b82f6, #93c5fd);
+  border-radius: 0.5rem 0.5rem 0 0;
+  transition: all 0.3s;
+}
+
+.chart-bar-dark {
+  width: 100%;
+  max-width: 50px;
+  background: linear-gradient(to top, #1e40af, #60a5fa);
+  border-radius: 0.5rem 0.5rem 0 0;
+  transition: all 0.3s;
+}
+
+.chart-bar-selected {
+  width: 100%;
+  max-width: 50px;
+  background: linear-gradient(to top, #f97316, #fbbf24);
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+.chart-label-light {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+}
+
+.chart-label-dark {
+  font-size: 0.75rem;
+  color: #93c5fd;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .city-title-light,
+  .city-title-dark {
+    font-size: 2rem;
+  }
+
+  .temp-display-light,
+  .temp-display-dark {
+    font-size: 3.5rem;
+  }
+
+  .date-picker-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .chart-bars {
+    gap: 0.25rem;
+  }
+}

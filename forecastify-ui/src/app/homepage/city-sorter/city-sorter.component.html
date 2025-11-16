@@ -1,0 +1,68 @@
+<!-- <p>city-sorter works! ll</p> -->
+
+<div [class]="(isDarkMode$ | async) ? 'sorter-container-dark' : 'sorter-container-light'">
+  <div class="sorter-header">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" [attr.stroke]="(isDarkMode$ | async) ? '#bfdbfe' : '#2563eb'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+      <polyline points="16 7 22 7 22 13"></polyline>
+    </svg>
+    <h3 [class]="(isDarkMode$ | async) ? 'sorter-title-dark' : 'sorter-title-light'">
+      Weather Trend
+    </h3>
+  </div>
+  
+  <div class="sorter-buttons">
+    <button 
+      (click)="sortCitiesHottest()"
+      [class]="getSortButtonClass('hottest')"
+      class="sort-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <span class="button-text">Sunny</span>
+    </button>
+
+    <button 
+      (click)="sortCitiesColdest()"
+      [class]="getSortButtonClass('coldest')"
+      class="sort-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+      </svg>
+      <span class="button-text">Cold Wind</span>
+    </button>
+
+        <button 
+      (click)="sortCitiesDriest()"
+      [class]="getSortButtonClass('dry')"
+      class="sort-button">
+      <svg xmlns="http://www.w3.org/2000/svg"
+          width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 17h18"></path>
+        <path d="M6 17l3-6 2 4 2-6 2 5 3-3"></path>
+        <path d="M3 21h18"></path>
+      </svg>
+      <span class="button-text">Dry</span>
+    </button>
+
+    <button 
+      (click)="sortCitiesHumidest()"
+      [class]="getSortButtonClass('humid')"
+      class="sort-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+      </svg>
+      <span class="button-text">Humid</span>
+    </button>
+  </div>
+</div>

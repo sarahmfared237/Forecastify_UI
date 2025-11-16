@@ -1,0 +1,33 @@
+<!-- <p>city-slider works! ll</p> -->
+
+<div class="slider-section">
+  <div class="slider-container">
+    <div class="slider-track">
+      <div *ngFor="let city of (cities$ | async)" 
+           class="city-card"
+           [class.card-light]="!((isDarkMode$ | async))"
+           [class.card-dark]="(isDarkMode$ | async)"
+           [class.highlighted]="isHighlighted(city)"
+           (click)="onCityClick(city.id)">
+        <h3 [class]="(isDarkMode$ | async) ? 'city-name-dark' : 'city-name-light'">
+          {{ city.city }}
+        </h3>
+        <div [class]="(isDarkMode$ | async) ? 'temperature-dark' : 'temperature-light'">
+          {{ getCurrentTemperature(city) }}
+        </div>
+        <div [class]="(isDarkMode$ | async) ? 'status-dark' : 'status-light'">
+          {{ city.weatherDescription }}
+        </div>
+        <div [class]="(isDarkMode$ | async) ? 'humidity-dark' : 'humidity-light'" class="humidity-row">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+          <span>Humidity: {{ city.humidity }}%</span>
+        </div>
+        <div [class]="(isDarkMode$ | async) ? 'date-dark' : 'date-light'">
+          {{ city.date }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

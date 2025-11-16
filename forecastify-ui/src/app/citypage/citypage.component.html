@@ -1,0 +1,168 @@
+<!-- <p>citypage works!</p> -->
+<div [class]="isDarkMode ? 'city-page-dark' : 'city-page-light'">
+  <div class="city-container" *ngIf="cityData">
+    <!-- Header -->
+    <div class="city-header">
+      <h1 [class]="isDarkMode ? 'city-title-dark' : 'city-title-light'">
+        {{ cityData.city }}
+      </h1>
+    </div>
+
+    <!-- Current Weather Display -->
+    <div [class]="isDarkMode ? 'current-weather-dark' : 'current-weather-light'" *ngIf="selectedForecast">
+      <div class="weather-main">
+        <!-- Weather Icon -->
+        <div class="weather-icon-container">
+          <div [ngSwitch]="getWeatherIcon()" class="weather-icon">
+            <!-- Sunny Icon -->
+            <svg *ngSwitchCase="'sunny'" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#fcd34d' : '#eab308'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Cloudy Icon -->
+            <svg *ngSwitchCase="'cloudy'" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#93c5fd' : '#3b82f6'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+            <!-- foggy Icon -->
+            <svg *ngSwitchCase="'foggy'" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#fcd34d' : '#eab308'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="M20 12h2"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+              <path d="M15.947 12.65a4 4 0 0 0-5.925-4.128"></path>
+              <path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6Z"></path>
+            </svg>
+            <!-- Windy Icon -->
+            <svg *ngSwitchCase="'windy'" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#60a5fa' : '#2563eb'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path>
+              <path d="M10.59 11.41A2 2 0 1 0 14 16H2"></path>
+              <path d="M17.73 7.73A2.5 2.5 0 1 1 19.5 12H2"></path>
+            </svg>
+            <!-- rainy Icon -->
+            <svg *ngSwitchCase="'rainy'" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#93c5fd' : '#3b82f6'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- cloud -->
+              <path d="M20 16.58A4 4 0 0 0 18 9h-1.26A6 6 0 1 0 3 14" />
+              <!-- raindrops -->
+              <path d="M8 16v3" />
+              <path d="M12 16v3" />
+              <path d="M16 16v3" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Temperature -->
+        <div [class]="isDarkMode ? 'temp-display-dark' : 'temp-display-light'">
+          {{ getCurrentTemp() }}°{{ isCelsius ? 'C' : 'F' }}
+        </div>
+        
+        <!-- Weather Status -->
+        <div [class]="isDarkMode ? 'status-text-dark' : 'status-text-light'">
+          {{ selectedForecast.weatherDescription }}
+        </div>
+    </div>
+
+      <!-- Weather Details -->
+      <div class="weather-details-grid">
+        <!-- Temperature Card -->
+        <div [class]="isDarkMode ? 'detail-card-dark' : 'detail-card-light'">
+          <div class="detail-label">Temperature</div>
+          <div class="detail-value">{{ getCurrentTemp() }}°{{ isCelsius ? 'C' : 'F' }}</div>
+                        <!-- Weather description -->
+        <div class="detail-status">
+          {{ selectedForecast.temperatureDescription }}
+        </div>
+        </div>
+
+        <!-- Humidity Card -->
+        <div [class]="isDarkMode ? 'detail-card-dark' : 'detail-card-light'">
+          <div class="detail-label">Humidity</div>
+          <div class="detail-value">{{ selectedForecast.humidity }}%</div>
+          <div class="detail-status">{{ selectedForecast.humidityDescription }}</div>
+        </div>
+
+        <!-- Date Card -->
+        <div [class]="isDarkMode ? 'detail-card-dark' : 'detail-card-light'">
+          <div class="detail-label">Date</div>
+          <div class="detail-value-small">{{ getFormattedDate(selectedForecast.date) }}</div>
+          <div class="detail-status">{{ getDayName(selectedForecast.date) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Week Date Picker -->
+    <div [class]="isDarkMode ? 'date-picker-dark' : 'date-picker-light'">
+      <h3 [class]="isDarkMode ? 'section-title-dark' : 'section-title-light'">7-Day Forecast</h3>
+      <div class="date-picker-grid">
+        <div *ngFor="let forecast of cityData.forecast; let i = index"
+             [class]="selectedDateIndex === i ? (isDarkMode ? 'date-card-selected-dark' : 'date-card-selected-light') : (isDarkMode ? 'date-card-dark' : 'date-card-light')"
+             (click)="selectDate(i)">
+          <div class="date-day">{{ getDayName(forecast.date) }}</div>
+          <div class="date-number">{{ getFormattedDate(forecast.date) }}</div>
+          
+          <!-- Mini Weather Icon -->
+          <div [ngSwitch]="getWeatherIcon()" class="date-icon">
+            <svg *ngSwitchCase="'sunny'" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+            </svg>
+            <svg *ngSwitchCase="'cloudy'" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+            <svg *ngSwitchCase="'foggy'" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#fcd34d' : '#eab308'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- cloud -->
+              <path d="M20 16.58A4 4 0 0 0 18 9h-1.26A6 6 0 1 0 3 14"></path>
+              <!-- fog lines -->
+              <path d="M3 18h18" stroke-linecap="round"></path>
+              <path d="M5 20h14" stroke-linecap="round"></path>
+              <path d="M7 22h10" stroke-linecap="round"></path>
+            </svg>
+            <svg *ngSwitchCase="'windy'" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.59 4.59A2 2 0 1 1 11 8H2"></path>
+            </svg>
+               <svg *ngSwitchCase="'rainy'" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" [attr.stroke]="isDarkMode ? '#93c5fd' : '#3b82f6'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- cloud -->
+              <path d="M20 16.58A4 4 0 0 0 18 9h-1.26A6 6 0 1 0 3 14"></path>
+              <!-- raindrops -->
+              <path d="M8 16v3"></path>
+              <path d="M12 16v3"></path>
+              <path d="M16 16v3"></path>
+            </svg>
+          </div>
+          
+          <div class="date-temp">
+            {{ isCelsius ? forecast.temperatureCelsius : forecast.temperatureFahrenheit }}°{{ isCelsius ? 'C' : 'F' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Graph -->
+    <div [class]="isDarkMode ? 'chart-container-dark' : 'chart-container-light'">
+      <h3 [class]="isDarkMode ? 'section-title-dark' : 'section-title-light'">Temperature Trend</h3>
+      <div class="chart-wrapper">
+        <div class="chart-bars">
+          <div *ngFor="let forecast of cityData.forecast; let i = index" class="chart-bar-container">
+            <span [class]="isDarkMode ? 'chart-temp-dark' : 'chart-temp-light'">
+              {{ isCelsius ? forecast.temperatureCelsius : forecast.temperatureFahrenheit }}°{{ isCelsius ? 'C' : 'F' }}
+            </span>
+            <div class="chart-bar" 
+                 [style.height.px]="getChartHeight(isCelsius ? forecast.temperatureCelsius : forecast.temperatureFahrenheit)"
+                 [class]="selectedDateIndex === i ? 'chart-bar-selected' : (isDarkMode ? 'chart-bar-dark' : 'chart-bar-light')">
+            </div>
+            <span [class]="isDarkMode ? 'chart-label-dark' : 'chart-label-light'">
+              {{ getDayName(forecast.date) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
